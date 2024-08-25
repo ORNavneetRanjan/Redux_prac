@@ -1,8 +1,16 @@
+import HappyIncrementor from "./HappyIncrementor";
+import HappyTracker from "./HappyTracker";
+import SadIncrementor from "./SadIncrementor";
+import SadTracker from "./SadTracker";
+
 function App() {
   return (
     <>
-      <div>
-        <h1 className="text-xl bg-gray-500 text-red-500">I love you</h1>
+      <div className=" bg-gray-200 min-h-screen  flex flex-col items-center">
+        <HappyTracker />
+        <HappyIncrementor />
+        <SadTracker />
+        <SadIncrementor />
       </div>
     </>
   );
