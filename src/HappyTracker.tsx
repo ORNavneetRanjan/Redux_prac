@@ -1,13 +1,18 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
-import { happyCountSelector } from "./selector";
+import { happyMomentSelector } from "./selector";
 type HappyTrackerProps = {};
 const HappyTracker: FC<HappyTrackerProps> = () => {
-  const happyCount = useSelector(happyCountSelector);
+  const happyMoments = useSelector(happyMomentSelector);
   return (
     <>
       <div className="bg-red-500 p-3 w-full text-center text-4xl">
-        Your <span className="text-white">Happy</span> Score is {happyCount}
+        {happyMoments.map((m) => (
+          <div key={m.when.toISOString()}>
+            Your <span className="text-white">Happy</span> Score is {m.quantity}{" "}
+            at {m.when.toISOString()}
+          </div>
+        ))}
       </div>
     </>
   );

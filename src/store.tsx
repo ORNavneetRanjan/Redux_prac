@@ -1,32 +1,44 @@
 import { AnyAction, createStore } from "redux";
-import { _HAPPY_BUTTON_CLICKED_, _SAD_BUTTON_CLICKED_ } from "./action";
+import {
+  _CLEAR_BUTTON_CLICKED_,
+  _HAPPY_BUTTON_CLICKED_,
+  _SAD_BUTTON_CLICKED_,
+} from "./action";
+import sadnessReducer, {
+  initialSad,
+  sadState,
+} from "./reducers/sadnessReducer";
+import happynessReducer, {
+  happyState,
+  initialHappy,
+} from "./reducers/happynessReducer";
+
+export type Moment = {
+  quantity: number;
+  when: Date;
+};
 
 export type State = {
-  sadCount: number;
-  happyCount: number;
+  sad: sadState;
+  happy: happyState;
 };
 
-const initialValues = {
-  sadCount: 0,
-  happyCount: 0,
+const initialValues: State = {
+  sad: initialSad,
+  happy: initialHappy,
 };
 //reducer has to be non-mutating
-function reducer(
-  currentState: State = initialValues,
-  action: AnyAction
-): State {
-  if (action.type === _HAPPY_BUTTON_CLICKED_) {
+function reducer(currentState = initialValues, action: AnyAction): State {
+  if (action.type === _CLEAR_BUTTON_CLICKED_) {
     return {
-      ...currentState,
-      happyCount: currentState.happyCount + action.payload,
-    };
-  } else if (action.type === _SAD_BUTTON_CLICKED_) {
-    return {
-      ...currentState,
-      sadCount: currentState.sadCount + action.payload,
+      sad: sadnessReducer(initialSad, action),
+      happy: happynessReducer(initialHappy, action),
     };
   }
-  return currentState;
+  return {
+    sad: sadnessReducer(currentState.sad, action),
+    happy: happynessReducer(currentState.happy, action),
+  };
 }
 const store = createStore(
   reducer,

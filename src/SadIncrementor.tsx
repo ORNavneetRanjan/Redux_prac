@@ -8,7 +8,7 @@ const SadIncrementor: FC<SadIncrementorProps> = () => {
   const [quantity, setQuantity] = useState(0);
   const dispatcher = useDispatch();
   function increment() {
-    dispatcher(sadButtonClicked(quantity));
+    dispatcher(sadButtonClicked(quantity, new Date()));
   }
   return (
     <>
