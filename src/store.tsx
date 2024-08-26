@@ -1,5 +1,9 @@
 import { AnyAction, createStore } from "redux";
-import { _HAPPY_BUTTON_CLICKED_, _SAD_BUTTON_CLICKED_ } from "./action";
+import {
+  _CLEAR_BUTTON_CLICKED_,
+  _HAPPY_BUTTON_CLICKED_,
+  _SAD_BUTTON_CLICKED_,
+} from "./action";
 
 export type State = {
   sadCount: number;
@@ -24,6 +28,11 @@ function reducer(
     return {
       ...currentState,
       sadCount: currentState.sadCount + action.payload,
+    };
+  } else if (action.type === _CLEAR_BUTTON_CLICKED_) {
+    return {
+      sadCount: 0,
+      happyCount: 0,
     };
   }
   return currentState;

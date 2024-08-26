@@ -1,3 +1,4 @@
+import Clear from "./Clear";
 import HappyIncrementor from "./HappyIncrementor";
 import HappyTracker from "./HappyTracker";
 import SadIncrementor from "./SadIncrementor";
@@ -11,6 +12,7 @@ function App() {
         <HappyIncrementor />
         <SadTracker />
         <SadIncrementor />
+        <Clear />
       </div>
     </>
   );
