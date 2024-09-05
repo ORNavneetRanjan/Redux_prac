@@ -1,13 +1,18 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
-import { sadCountSelector } from "./selector";
+import { sadMomentSelector } from "./selectors/mood-selector";
 type SadTrackerProps = {};
 const SadTracker: FC<SadTrackerProps> = () => {
-  const sadCount = useSelector(sadCountSelector);
+  const sadMoments = useSelector(sadMomentSelector);
   return (
     <>
       <div className="bg-blue-500 p-3 w-full text-center text-4xl">
-        Your <span className="text-white">Sad</span> Score is {sadCount}
+        {sadMoments.map((m) => (
+          <div key={m.when.toISOString()}>
+            Your <span className="text-white">Sad</span> Score was {m.quantity}{" "}
+            at {m.when.toISOString()}
+          </div>
+        ))}{" "}
       </div>
     </>
   );

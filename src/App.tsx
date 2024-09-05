@@ -1,6 +1,7 @@
-import Clear from "./Clear";
+import Clear from "./clear";
 import HappyIncrementor from "./HappyIncrementor";
 import HappyTracker from "./HappyTracker";
+import ProductList from "./products/ProductList";
 import SadIncrementor from "./SadIncrementor";
 import SadTracker from "./SadTracker";
 
@@ -13,6 +14,7 @@ function App() {
         <SadTracker />
         <SadIncrementor />
         <Clear />
+        <ProductList />
       </div>
     </>
   );

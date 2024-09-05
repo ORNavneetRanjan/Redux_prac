@@ -1,6 +1,6 @@
 import { FC, memo, useState } from "react";
 import { useDispatch } from "react-redux";
-import { happyButtonClicked } from "./action";
+import { happyButtonClicked } from "./actions/mood-action";
 
 type HappyIncrementorProps = {};
 
@@ -8,7 +8,7 @@ const HappyIncrementor: FC<HappyIncrementorProps> = () => {
   const [quantity, setQuantity] = useState(0);
   const dispatcher = useDispatch();
   function increment() {
-    dispatcher(happyButtonClicked(quantity));
+    dispatcher(happyButtonClicked(quantity, new Date()));
   }
   return (
     <>

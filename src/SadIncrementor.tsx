@@ -1,6 +1,6 @@
 import { FC, memo, useState } from "react";
 import { useDispatch } from "react-redux";
-import { sadButtonClicked } from "./action";
+import { sadButtonClicked } from "./actions/mood-action";
 
 type SadIncrementorProps = {};
 
@@ -8,7 +8,7 @@ const SadIncrementor: FC<SadIncrementorProps> = () => {
   const [quantity, setQuantity] = useState(0);
   const dispatcher = useDispatch();
   function increment() {
-    dispatcher(sadButtonClicked(quantity));
+    dispatcher(sadButtonClicked(quantity, new Date()));
   }
   return (
     <>
