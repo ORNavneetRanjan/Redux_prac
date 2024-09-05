@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { _CLEAR_BUTTON_CLICKED_, clearButtonClicked } from "./action";
+import {
+  _CLEAR_BUTTON_CLICKED_,
+  clearButtonClicked,
+} from "./actions/mood-action";
 
 export default function Clear() {
   const dispatcher = useDispatch();

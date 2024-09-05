@@ -1,7 +1,7 @@
-import { State } from "./store";
+import { State } from "../store";
 
 export function happyMomentSelector(state: State) {
-  return state.happy.happyMoments;
+  return state.happpy.happyMoments;
 }
 
 export function sadMomentSelector(state: State) {
