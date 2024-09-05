@@ -1,4 +1,4 @@
-import Clear from "./clear";
+import Clear from "./Clear";
 import HappyIncrementor from "./HappyIncrementor";
 import HappyTracker from "./HappyTracker";
 import ProductList from "./products/ProductList";
