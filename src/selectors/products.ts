@@ -5,5 +5,6 @@ export function productLoadingSelector(state: State) {
 }
 
 export function productsSelector(state: State) {
-  return state.products.products;
+  const normalizedProducts = state.products.products;
+  return Object.keys(normalizedProducts).map((pid) => normalizedProducts[+pid]);
 }

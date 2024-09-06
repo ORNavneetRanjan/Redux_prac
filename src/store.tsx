@@ -7,6 +7,7 @@ import {
 import happynessReducer from "./reducers/happynessReducer";
 import sadnessReducer from "./reducers/sadnessReducer";
 import productReducer from "./reducers/product";
+import ordersReducer from "./reducers/orders";
 
 export type Moment = {
   quantity: number;
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   sad: sadnessReducer,
   happpy: happynessReducer,
   products: productReducer,
+  orders: ordersReducer,
 });
 
 export type State = ReturnType<typeof reducer>;

@@ -28,21 +28,26 @@ const ProductListPage: FC<ProductListPageProps> = () => {
   if (loading) {
     return <Loading />;
   }
-
+  console.log(products);
   return (
     <>
       <div className="flex flex-wrap m-auto items-center justify-center">
         {products &&
-          products.map((p) => (
-            <Product
-              id={p.id}
-              title={p.title}
-              brand={p.brand}
-              price={p.price}
-              description={p.description}
-              thumbnail={p.thumbnail}
-            />
-          ))}
+          products.map((p) => {
+            console.log(p);
+            if (p) {
+              return (
+                <Product
+                  id={p.id}
+                  title={p.title}
+                  brand={p.brand}
+                  price={p.price}
+                  description={p.description}
+                  thumbnail={p.thumbnail}
+                />
+              );
+            }
+          })}
       </div>
     </>
   );

@@ -1,20 +1,19 @@
-import Clear from "./Clear";
-import HappyIncrementor from "./HappyIncrementor";
-import HappyTracker from "./HappyTracker";
+import { Link, Route, Routes } from "react-router-dom";
+
+import OrderList from "./products/OrderList";
+import OrderDetails from "./products/OrderDetails";
+import Home from "./Home";
 import ProductList from "./products/ProductList";
-import SadIncrementor from "./SadIncrementor";
-import SadTracker from "./SadTracker";
 
 function App() {
   return (
     <>
       <div className=" bg-gray-200 min-h-screen  flex flex-col items-center">
-        <HappyTracker />
-        <HappyIncrementor />
-        <SadTracker />
-        <SadIncrementor />
-        <Clear />
-        <ProductList />
+        <Routes>
+          <Route index element={<ProductList />} />
+          <Route path="/orders" element={<OrderList />} />
+          <Route path="/orders/:orderId" element={<OrderDetails />} />
+        </Routes>
       </div>
     </>
   );
