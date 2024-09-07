@@ -1,8 +1,6 @@
-import { Link, Route, Routes } from "react-router-dom";
-
+import { Route, Routes } from "react-router-dom";
 import OrderList from "./products/OrderList";
 import OrderDetails from "./products/OrderDetails";
-import Home from "./Home";
 import ProductList from "./products/ProductList";
 
 function App() {

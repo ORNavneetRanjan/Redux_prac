@@ -1,14 +1,39 @@
+import { createSelector } from "reselect";
+import Product from "../models/Product";
 import { State } from "../store";
+import { productsMapSelector } from "./products";
 
-export function orderLoadingSelector(state: State) {
-  return state.orders.loading;
+export function orderStateSelector(state: State) {
+  return state.orders;
 }
 
-export function ordersSelector(state: State) {
-  const normalizedOrder = state.orders.orders;
+export const orderLoadingSelector = createSelector(
+  orderStateSelector,
+  function (orderState) {
+    return orderState.loading;
+  }
+);
 
-  const orderArr = Object.keys(normalizedOrder).map((orderId) => {
-    return normalizedOrder[+orderId];
-  });
-  return orderArr;
-}
+export const ordersMapSelector = createSelector(
+  orderStateSelector,
+  (orderSate) => orderSate.orders
+);
+
+export const ordersSelector = createSelector(
+  ordersMapSelector,
+  (normalizedOrders) =>
+    Object.keys(normalizedOrders).map((orderId) => normalizedOrders[+orderId])
+);
+
+export const ordersProductsSelector = createSelector(
+  ordersMapSelector,
+  productsMapSelector,
+  (orderMap, productsMap) =>
+    Object.keys(orderMap).reduce<{
+      [orderId: number]: Product[];
+    }>((previous, currentOrderId) => {
+      const order = orderMap[+currentOrderId];
+      const products = order.products.map((pid) => productsMap[pid]);
+      return { ...previous, [currentOrderId]: products };
+    }, {})
+);

@@ -5,7 +5,7 @@ import {
   productLoadedAction,
 } from "../actions/products";
 import {
-  productLoadingSelector,
+  productsLoadingSelector,
   productsSelector,
 } from "../selectors/products";
 import Loading from "../Loading";
@@ -15,7 +15,7 @@ import Product from "./Products";
 type ProductListPageProps = {};
 
 const ProductListPage: FC<ProductListPageProps> = () => {
-  const loading = useSelector(productLoadingSelector);
+  const loading = useSelector(productsLoadingSelector);
   const products = useSelector(productsSelector);
   const dispatch = useDispatch();
 
